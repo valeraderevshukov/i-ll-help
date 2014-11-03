@@ -4,5 +4,14 @@ head.ready(function() {
 	// 	$(".js-popup").hide();
 	// });
 
-	console.log($('body').html());
+	$(document).click(function() {
+		$(".js-dropdown").removeClass("is-active");
+	});
+	$(".js-dropdown").on("click", function(){
+		$(this).toggleClass("is-active");
+	});
+	$("body").on("click", ".js-dropdown", function(event){
+		event.stopPropagation();
+	});
+
 });

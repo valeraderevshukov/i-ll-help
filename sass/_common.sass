@@ -48,119 +48,217 @@
 // 	+jpg(bla)
 
 
++font(Museo-Sans-900, MuseoSansCyrl900)  
+=ms900
+	font-family: "Museo-Sans-900", Arial, sans-serif 
+
++font(Helvetica-Neue-Medium, HelveticaNeueCyr-Medium)  
+=hnm
+	font-family: "Helvetica-Neue-Medium", Arial, sans-serif
+
 body
+	position: relative
 	font-family: Arial, sans-serif 
-	font-size: 12px 
+	font-size: 15px 
 	line-height: 1.4
+	// &.is-hidden
+	// 	position: relative
+	// 	overflow: hidden
+	// 	.out
+	// 		overflow: hidden
 
 
 // common blocks      
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//out
+.out
+	.out__bg
+		width: 100%
+		display: block
+
+//header-popup
+.header-popup
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	padding: 0 45px 0 30px
+	height: 57px
+	background-color: #ececec
+	text-align: center
+	z-index: 11
+	border-bottom: 1px solid #d3d3d3
+	+box-shadow(0 1px 2px rgba(0,0,0,.06))
+	display: none
+	+clr
+	+box
+	.logo
+		float: left
+		margin-top: 17px
+		color: #a3a3a3
+		font-size: 26px
+		line-height: 1
+		text-transform: uppercase
+		text-decoration: none
+		+transition(all 0.1s linear)
+		+ms900
+		&:hover
+			color: darken(#a3a3a3, 10)
+	.share
+		margin-top: 11px
+		height: 34px
+		line-height: 34px
+		font-size: 0
+	.share__item
+		margin: 7px 0 0 27px
+		height: 20px
+		line-height: 20px
+		font-size: 14px
+		color: #989898
+		cursor: pointer
+		&:hover
+			color: #7f7f7f
+			.ico_like
+				+si(ico_like-hover)
+			.ico_tell
+				+s(ico_tell-hover)
+	.share, .share__item
+		vertical-align: top
+	.ico, .share__item span
+		vertical-align: middle
+	.share, .share__item, .share__item span
+		display: inline-block
+	.share__btn
+		padding: 0 25px
+		height: 34px
+		color: #fff
+		font-size: 15px
+		line-height: 32px
+		+border-radius(17px)
+		background-color: #989898
+		+transition(all 0.1s linear)
+		+hnm
+		&:hover
+			background-color: #eb250a
+	.dropdown
+		float: right
+		width: 120px
+
+//dropdown
+.dropdown
+	position: relative
+	margin-top: 20px
+	padding-right: 5px
+	height: 15px
+	color: #989898
+	line-height: 15px
+	text-align: right
+	cursor: pointer
+	font-size: 13px
+	+transition(all 0.1s linear)
+	&:hover
+		color: #7f7f7f
+	&.is-active
+		.dropdown__list
+			opacity: 1
+			visibility: visible
+.dropdown__list
+	position: absolute
+	left: 0
+	right: 0
+	top: 100%
+	margin-top: 18px
+	visibility: hidden
+	opacity: 0
+	z-index: 100
+	text-align: left
+	border: 1px solid #bababa
+	background: #fafafa
+	+transition(all 0.2s linear)
+	+border-radius(3px)
+	+box-shadow(0 3px 9px rgba(2,2,2,.21))
+	&:before
+		position: absolute
+		content: ''
+		top: -10px
+		right: 20px 
+		+s(arr-top)
+	li
+		padding: 10px 15px 
+		cursor: pointer
+		line-height: 1
+		font-size: 12px
+		color: #666
+		+clr
+		&:hover
+			background: #eee
+	span
+		float: right
+
+//ico
+.ico
+	display: inline-block
+	&.ico_like
+		+s(ico_like)
+		&:hover
+			+si(ico_like-hover)
+	&.ico_tell
+		+s(ico_tell)
+		&:hover
+			+s(ico_tell-hover)
+
+//popup
+.popup
+	position: absolute
+	top: 0
+	left: 0
+	bottom: 0
+	padding: 115px 0
+	width: 100%
+	z-index: 10
+	background-color: rgba(#ececec, 0.94)
+	display: none
+	&.is-active
+		display: block
+		.header-popup
+			display: block
+	p
+		margin-top: 18px
+	a
+		color: #ee2909
+		&:hover
+			text-decoration: none
+	.popup__wrap
+		margin: 0 auto
+		width: 702px
+		background: #fff
+		+box
+	.popup__field
+		padding: 28px
+//user
+.user
+	font-size: 0
+	height: 59px
+	line-height: 59px
+	.user__img
+		img
+			display: block
+	.user__name
+		color: #272727
+		font-size: 14px
+		font-weight: bold
+		text-decoration: none
+		&:hover
+			text-decoration: underline
+	.user__img, .user__name, .date
+		line-height: 1
+		vertical-align: middle
+		display: inline-block
+	.user__name, .date
+		margin-left: 15px
+
+//date
+.date
+	color: #898989
+	font-size: 13px
+	display: inline-block
