@@ -56,16 +56,24 @@
 =hnm
 	font-family: "Helvetica-Neue-Medium", Arial, sans-serif
 
++font(Helvetica-Neue, HelveticaNeue)  
+=hn
+	font-family: "Helvetica-Neue", Arial, sans-serif
+
++font(Helvetica-Neue-Bold, HelveticaNeueCyr-Bold)  
+=hnb
+	font-family: "Helvetica-Neue-Bold", Arial, sans-serif
+
 body
 	position: relative
 	font-family: Arial, sans-serif 
 	font-size: 15px 
 	line-height: 1.4
-	// &.is-hidden
-	// 	position: relative
-	// 	overflow: hidden
-	// 	.out
-	// 		overflow: hidden
+	&.is-open-popup
+		position: relative
+		overflow: hidden
+		.popup
+			display: block
 
 
 // common blocks      
@@ -86,10 +94,9 @@ body
 	height: 57px
 	background-color: #ececec
 	text-align: center
-	z-index: 11
+	z-index: 103
 	border-bottom: 1px solid #d3d3d3
 	+box-shadow(0 1px 2px rgba(0,0,0,.06))
-	display: none
 	+clr
 	+box
 	.logo
@@ -162,38 +169,38 @@ body
 		.dropdown__list
 			opacity: 1
 			visibility: visible
-.dropdown__list
-	position: absolute
-	left: 0
-	right: 0
-	top: 100%
-	margin-top: 18px
-	visibility: hidden
-	opacity: 0
-	z-index: 100
-	text-align: left
-	border: 1px solid #bababa
-	background: #fafafa
-	+transition(all 0.2s linear)
-	+border-radius(3px)
-	+box-shadow(0 3px 9px rgba(2,2,2,.21))
-	&:before
+	.dropdown__list
 		position: absolute
-		content: ''
-		top: -10px
-		right: 20px 
-		+s(arr-top)
-	li
-		padding: 10px 15px 
-		cursor: pointer
-		line-height: 1
-		font-size: 12px
-		color: #666
-		+clr
-		&:hover
-			background: #eee
-	span
-		float: right
+		left: 0
+		right: 0
+		top: 100%
+		margin-top: 15px
+		visibility: hidden
+		opacity: 0
+		z-index: 100
+		text-align: left
+		border: 1px solid #bababa
+		background: #fafafa
+		+transition(all 0.2s linear)
+		+border-radius(3px)
+		+box-shadow(0 3px 9px rgba(2,2,2,.21))
+		&:before
+			position: absolute
+			content: ''
+			top: -10px
+			right: 20px 
+			+s(arr-top)
+		li
+			padding: 10px 15px 
+			cursor: pointer
+			line-height: 1
+			font-size: 12px
+			color: #666
+			+clr
+			&:hover
+				background: #eee
+		span
+			float: right
 
 //ico
 .ico
@@ -206,6 +213,9 @@ body
 		+s(ico_tell)
 		&:hover
 			+s(ico_tell-hover)
+	&.ico_address
+		+s(ico_address)
+
 
 //popup
 .popup
@@ -213,44 +223,99 @@ body
 	top: 0
 	left: 0
 	bottom: 0
-	padding: 115px 0
+	padding: 115px 0 0
 	width: 100%
 	z-index: 10
+	overflow: auto
 	background-color: rgba(#ececec, 0.94)
 	display: none
-	&.is-active
-		display: block
-		.header-popup
-			display: block
 	p
-		margin-top: 18px
+		margin-bottom: 18px
 	a
 		color: #ee2909
 		&:hover
 			text-decoration: none
 	.popup__wrap
-		margin: 0 auto
+		margin: 0 auto 115px
 		width: 702px
+		color: #272727
 		background: #fff
 		+box
 	.popup__field
 		padding: 28px
+	.user_top
+		margin-bottom: 23px
+	.popup__row
+		margin: 20px 0 5px
+		+clr
+	.popup__address
+		position: relative
+		float: left
+		margin-top: 7px
+		padding-left: 25px
+		max-width: 500px
+		color: #7e7e7e
+		font-size: 14px
+		text-decoration: none
+		&:hover
+			color: #ee2909
+			.ico_address
+				+s(ico_address-hover)
+		.ico 
+			position: absolute
+			top: 1px
+			left: 0
+	.popup__form
+		border-top: 1px solid #dfdfdf
+		+clr
+		.comment__img
+			float: left
+		.comments__field
+			float: right
+//help
+.help
+	float: right
+	font-size: 0
+	.help__btn
+		margin-left: 7px
+		padding: 0 16px
+		height: 33px
+		color: #7f7f7f
+		font-size: 14px
+		line-height: 33px
+		+border-radius(16px)
+		background-color: #ececec
+		display: inline-block
+		+box
+		&:first-child
+			margin-left: 0
+		&:hover
+			background-color: #e3e3e3
+			color: #393939
+			.ico_like
+				+si(ico_like-hover)
+	.help__btn_like
+		padding: 0
+		width: 33px
+		.ico
+			vertical-align: middle
+
 //user
-.user
+.user, .comment__top
 	font-size: 0
 	height: 59px
 	line-height: 59px
-	.user__img
+	.user__img, .comment__img
 		img
 			display: block
 	.user__name
 		color: #272727
 		font-size: 14px
-		font-weight: bold
 		text-decoration: none
+		+hnb
 		&:hover
 			text-decoration: underline
-	.user__img, .user__name, .date
+	.user__img, .user__name, .date, .user__name, .comment__img
 		line-height: 1
 		vertical-align: middle
 		display: inline-block
@@ -262,3 +327,200 @@ body
 	color: #898989
 	font-size: 13px
 	display: inline-block
+	+hn
+
+//slider
+.slider
+	height: 407px
+	overflow: hidden
+	.slider__btn
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		z-index: 101
+	.slider__prev, .slider__next
+		position: absolute
+		top: 0
+		width: 50%
+		height: 100%
+		background: none
+	.slider__prev
+		left: 0
+	.slider__next
+		right: 0
+	.slider__pager
+		position: absolute
+		left: 0
+		bottom: 17px
+		height: 12px
+		width: 100%
+		text-align: center
+		z-index: 102
+		button
+			margin-left: 11px
+			height: 12px
+			width: 12px
+			+border-radius(50%)
+			background-color: #fff
+			display: inline-block
+			vertical-align: top
+			+box
+			&:first-child
+				margin-left: 0
+			&.cycle-pager-active
+				border: 1px solid #db0401
+				background: none
+
+//comments
+.comments
+	background-color: #f8f8f8
+	+clr
+	.comments__amount
+		margin-bottom: 25px
+		color: #343434
+		font-weight: bold
+	.comment
+		margin-top: 25px
+	.is-active
+		.date
+			&:before
+				display: block
+	.date
+		position: relative
+		&:before
+			position: absolute
+			content: ''
+			right: -23px
+			top: 50%
+			margin-top: -4px
+			height: 7px
+			width: 7px
+			+border-radius(50%)
+			background-color: #6ed016
+			display: none
+	.comment__top
+		height: 29px
+		line-height: 29px
+		+clr
+	.comment__user
+		float: left
+	.comment__recall
+		position: relative
+		float: right
+		padding-left: 60px
+		font-size: 13px
+		color: #575757
+		+hnb
+	.comment__like, .comment__not-like
+		position: absolute
+		top: 50%
+		margin-top: -7px
+		margin-right: 18px
+	.comment__like
+		left: 0
+		+s(ico_liked)
+		&:hover
+			+s(ico_liked-hover)
+		&:active
+			margin-top: -8px
+	.comment__not-like
+		left: 29px
+		+s(ico_not-like)
+		&:hover
+			+s(ico_not-like-hover)
+		&:active
+			+s(ico_not-like-active)
+	.user__name
+		font-size: 13px
+	.comment__text
+		margin-top: 10px
+		font-size: 14px
+		+hn
+		+clr
+	.comment__item
+		position: relative
+		margin-top: 25px
+		padding-left: 30px
+		&:before
+			position: absolute
+			content: ''
+			top: 12px
+			left: 0
+			height: 4px
+			width: 4px
+			+border-radius(50%)
+			background-color: #c1c1c1
+	.user__name_author
+		color: #d74646
+	.comment__wrap
+		&:hover
+			.comment__like
+				+s(ico_liked-hover)
+			.comment__not-like
+				+s(ico_not-like-hover)
+				&:active
+					+s(ico_not-like-active)
+		&.is-disabled
+			+opacity(0.6)
+	.comments__field
+		width: 594px
+	.comments__area
+		position: relative
+		textarea
+			padding: 10px 6px
+			height: 82px
+			width: 100%
+			font-size: 13px
+			color: #000
+			border: 1px solid #dadada
+			display: block
+			resize: none
+			font-family: Arial, sans-serif 
+			+box
+			+placeholder-color(#a3a3a3)
+	.comments__smile
+		position: absolute
+		top: 6px
+		right: 8px
+		+s(ico_smile)
+		&:hover
+			+opacity(0.8)
+		&:active
+			top: 5px
+	.comments__row
+		margin-top: 13px
+		+clr
+	.comments__btn
+		position: relative
+		float: left
+		padding: 0 15px
+		height: 34px
+		color: #fff
+		font-size: 12px
+		line-height: 34px
+		+border-radius(3px)
+		background-color: #424242
+		+box-shadow(inset 0 0 0 1px rgba(0,0,0,.25))
+		+transition(all 0.1s linear)
+		&:hover
+			background-color: rgba(#424242, 0.9)
+		&:active
+			top: -1px
+	.add-photo
+		position: relative
+		float: right
+		margin-top: 8px
+		padding-left: 28px
+		color: #999999
+		font-size: 13px
+		text-decoration: none
+		&:hover
+			text-decoration: underline
+		&:before
+			position: absolute
+			content: ''
+			top: 1px
+			left: 0
+			+s(ico_photo)
