@@ -110,6 +110,7 @@ body
 		text-decoration: none
 		+transition(all 0.1s linear)
 		+ms900
+		+s(ico_logo)
 		&:hover
 			color: darken(#a3a3a3, 10)
 	.share
@@ -145,7 +146,7 @@ body
 		+border-radius(17px)
 		background-color: #989898
 		+transition(all 0.1s linear)
-		+hnm
+		+hn
 		&:hover
 			background-color: #eb250a
 	.dropdown
@@ -220,7 +221,7 @@ body
 
 //popup
 .popup
-	position: absolute
+	position: fixed
 	top: 0
 	left: 0
 	bottom: 0
@@ -239,6 +240,14 @@ body
 		color: #ee2909
 		&:hover
 			text-decoration: none
+	.popup__container
+		position: absolute
+		top: 57px
+		left: 0
+		right: 0
+		bottom: 0
+		padding-top: 60px
+		overflow: auto
 	.popup__wrap
 		margin: 0 auto 115px
 		width: 702px
@@ -413,10 +422,17 @@ body
 	.comment__recall
 		position: relative
 		float: right
-		padding-left: 60px
+		padding-left: 68px
+		height: 22px
 		font-size: 13px
 		color: #575757
 		+hnb
+		span
+			top: 0
+			right: 0
+			line-height: 1.5
+			position: absolute
+
 	.comment__like, .comment__not-like
 		position: absolute
 		top: 50%
